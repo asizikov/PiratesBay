@@ -2,25 +2,24 @@
 using PiratesBay.Domain;
 using PiratesBay.Commands;
 using System.Windows.Input;
-using System;
 
 namespace PiratesBay.ViewModels
 {
     public class MainViewModel: BaseViewModel
     {
-        private ICalculation calculation;
-        private double total;
-        private IPersonFactory<PersonViewModel> personsFactory;
+        private readonly ICalculation _calculation;
+        private double _total;
+        private readonly IPersonFactory<PersonViewModel> _personsFactory;
 
         public ObservableCollection<IPerson> Persons { get; private set; }
 
         public double Total {
-            get { return total; }
+            get { return _total; }
             private set 
             {
-                if (total != value) 
+                if (_total != value) 
                 {
-                    total = value;
+                    _total = value;
                     RaisePropertyChanged("Total");
                 }
             }
@@ -29,10 +28,11 @@ namespace PiratesBay.ViewModels
         public ICommand AddNewPersonCommand { get; private set; }
 
 
-        public MainViewModel(ICalculation calculation, ObservableCollection<IPerson> persons, IPersonFactory<PersonViewModel> personsFactory)
+        public MainViewModel(ICalculation calculation, ObservableCollection<IPerson> persons, 
+            IPersonFactory<PersonViewModel> personsFactory)
         {
-            this.calculation = calculation;
-            this.personsFactory = personsFactory;
+            _calculation = calculation;
+            _personsFactory = personsFactory;
             Persons = persons;
             AddNewPerson();
 
@@ -42,34 +42,32 @@ namespace PiratesBay.ViewModels
         private void SetUpCommands()
         {
             AddNewPersonCommand = new AddNewPersonCommand(
-                canExecute: () => { return true; },
-                execute: () => { AddNewPerson(); }
-                );
+                () => true, AddNewPerson);
         }
 
         private void AddNewPerson()
         {
-            var person = personsFactory.GetNewPerson(Persons.Count);
+            var person = _personsFactory.GetNewPerson(Persons.Count);
             person.PropertyChanged += (s, e) => 
             {
                 if (e.PropertyName == "Spent") 
                 {
-                    calculation.Process();
-                    Total = calculation.Total;
+                    _calculation.Process();
+                    Total = _calculation.Total;
                 }
             };
-            person.OnDelete += (p) => 
+            person.OnDelete += p => 
             {
                 if (Persons.Contains(p)) 
                 {
                     Persons.Remove(p);
-                    calculation.Process();
-                    Total = calculation.Total;
+                    _calculation.Process();
+                    Total = _calculation.Total;
                 }
             };
 
             Persons.Add(person);
-            calculation.Process();
+            _calculation.Process();
 
         }
 
