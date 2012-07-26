@@ -59,6 +59,24 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight">
       <HintPath>..\Lib\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json.WindowsPhone">
+      <HintPath>..\Lib\WP7\Newtonsoft.Json.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Blend_WP7">
+      <HintPath>..\Lib\WP7\ReactiveUI.Blend_WP7.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Serialization_WP7">
+      <HintPath>..\Lib\WP7\ReactiveUI.Serialization_WP7.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Xaml_WP7">
+      <HintPath>..\Lib\WP7\ReactiveUI.Xaml_WP7.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI_WP7">
+      <HintPath>..\Lib\WP7\ReactiveUI_WP7.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CoreEx">
+      <HintPath>..\Lib\WP7\System.CoreEx.dll</HintPath>
+    </Reference>
     <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Reactive.Windows.Threading, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />

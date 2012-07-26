@@ -1,8 +1,6 @@
 ﻿using Microsoft.Phone.Controls;
 using Microsoft.Silverlight.Testing;
-using PiratesBay.Domain;
 using PiratesBay.ViewModels;
-using System.Collections.ObjectModel;
 
 namespace PiratesBay
 {
