@@ -1,78 +1,79 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using PiratesBay.Domain;
 using System.Windows.Input;
 using PiratesBay.Commands;
+using PiratesBay.Domain;
 
 namespace PiratesBay.ViewModels
 {
     public class PersonViewModel: BaseViewModel, IPerson
     {
-        private string name;
-        private double spent;
-        private double debt;
-        IPerson person;
+        private string _name;
+        private double _spent;
+        private double _debt;
 
         public event Action<PersonViewModel> OnDelete;
 
         public PersonViewModel(IPerson person)
         {
-            this.person = person;
-            name = person.Name;
-            spent = person.Spent;
-            debt = person.Debt;
+            _name = person.Name;
+            _spent = person.Spent;
+            _debt = person.Debt;
 
-        }
-
-        public PersonViewModel()
-        {
-            name = String.Empty;
-            DeleteThisCommand = new DeleteThisPersonCommand(RaiseOnDelete);
         }
 
         public string Name 
         {
-            get { return name; }
+            get { return _name; }
             set 
             {
-                if (name == value)
+                if (_name == value)
                     return;
-                name = value;
+                _name = value;
                 RaisePropertyChanged("Name");
             } 
         }
 
-        public double Spent { get { return spent; }
+        public double Spent { get { return _spent; }
             set 
             {
-                if (spent != value) 
+                if (_spent != value) 
                 {
-                    spent = value;
+                    _spent = value;
                     RaisePropertyChanged("Spent");
                 }
             }
         }
 
-        public ICommand DeleteThisCommand { get; set; }
-
         public double Debt
         {
-            get { return debt; }
+            get { return _debt; }
             set
             {
-                if (debt != value)
+                if (_debt != value)
                 {
-                    debt = value;
+                    _debt = value;
                     RaisePropertyChanged("Debt");
                 }
             }
         }
 
         public static string DefaultName
-        { get { return "Новый участник"; } }
+        {
+            get
+            {
+                return "Новый участник";
+            }
+        }
+
+        private DeleteThisPersonCommand _deleteCommand;
+        public ICommand DeleteThisCommand
+        {
+            get
+            {
+                return _deleteCommand ??
+                    (_deleteCommand = new DeleteThisPersonCommand(RaiseOnDelete));
+            }
+        }
 
         private void RaiseOnDelete() 
         {

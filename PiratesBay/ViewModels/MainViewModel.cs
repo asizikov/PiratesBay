@@ -8,8 +8,10 @@ namespace PiratesBay.ViewModels
     public class MainViewModel: BaseViewModel
     {
         private readonly ICalculation _calculation;
-        private double _total;
         private readonly IPersonFactory<PersonViewModel> _personsFactory;
+
+        private double _total;
+        
 
         public ObservableCollection<IPerson> Persons { get; private set; }
 
