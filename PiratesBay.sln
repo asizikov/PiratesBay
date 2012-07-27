@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiratesBay", "PiratesBay\PiratesBay.csproj", "{8D8191DD-AA2A-4CE7-A320-83575EB56C61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiratesBay.Tests", "PiratesBay.Tests\PiratesBay.Tests.csproj", "{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{8D8191DD-AA2A-4CE7-A320-83575EB56C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D8191DD-AA2A-4CE7-A320-83575EB56C61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D8191DD-AA2A-4CE7-A320-83575EB56C61}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,7 +17,7 @@ namespace PiratesBay.Test.Unit
         [TestMethod]
         public void AcceptsLambdasAsCanExecute()
         {
-            var command = new AddNewPersonCommand(() => { return true; }, null);
+            var command = new AddNewPersonCommand(() => true, null);
             Assert.IsTrue(command.CanExecute(null));
         }
 

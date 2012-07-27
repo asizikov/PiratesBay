@@ -1,5 +1,4 @@
 ﻿using Microsoft.Phone.Controls;
-using Microsoft.Silverlight.Testing;
 using PiratesBay.ViewModels;
 
 namespace PiratesBay
@@ -8,25 +7,8 @@ namespace PiratesBay
     {
         public MainPage()
         {
+            DataContext = ViewModelLocator.MainViewModel;
             InitializeComponent();
-
-            const bool runUnitTests = false;
-
-            if (runUnitTests)
-            {
-                Content = UnitTestSystem.CreateTestPage();
-                IMobileTestPage imtp = Content as IMobileTestPage;
-
-                if (imtp != null)
-                {
-                    BackKeyPress += (x, xe) => xe.Cancel = imtp.NavigateBack();
-                }
-            }
-            else 
-            {
-                DataContext = ViewModelLocator.MainViewModel;
-            }
-            
         }
     }
 }

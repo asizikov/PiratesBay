@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8D8191DD-AA2A-4CE7-A320-83575EB56C61}</ProjectGuid>
+    <ProjectGuid>{0D7A6C93-0A1A-41E9-A4A1-63A6C5FC2819}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PiratesBay</RootNamespace>
-    <AssemblyName>PiratesBay</AssemblyName>
+    <RootNamespace>PiratesBay.Tests</RootNamespace>
+    <AssemblyName>PiratesBay.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -20,13 +20,11 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>PiratesBay.xap</XapFilename>
+    <XapFilename>PiratesBay.Tests.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>PiratesBay.App</SilverlightAppEntry>
+    <SilverlightAppEntry>PiratesBay.Tests.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
-    <Utf8Output>true</Utf8Output>
-    <ExpressionBlendVersion>4.0.30816.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,33 +48,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BindableApplicationBar">
-      <HintPath>..\Lib\BindableAppBar\BindableApplicationBar.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Phone" />
-    <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
-    <Reference Include="Newtonsoft.Json.WindowsPhone">
-      <HintPath>..\Lib\WP7\Newtonsoft.Json.WindowsPhone.dll</HintPath>
+    <Reference Include="Microsoft.Silverlight.Testing">
+      <HintPath>..\Lib\Tests\Microsoft.Silverlight.Testing.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Blend_WP7">
-      <HintPath>..\Lib\WP7\ReactiveUI.Blend_WP7.dll</HintPath>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight">
+      <HintPath>..\Lib\Tests\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Serialization_WP7">
-      <HintPath>..\Lib\WP7\ReactiveUI.Serialization_WP7.dll</HintPath>
-    </Reference>
-    <Reference Include="ReactiveUI.Xaml_WP7">
-      <HintPath>..\Lib\WP7\ReactiveUI.Xaml_WP7.dll</HintPath>
-    </Reference>
-    <Reference Include="ReactiveUI_WP7">
-      <HintPath>..\Lib\WP7\ReactiveUI_WP7.dll</HintPath>
-    </Reference>
-    <Reference Include="System.CoreEx">
-      <HintPath>..\Lib\WP7\System.CoreEx.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Reactive.Windows.Threading, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -88,40 +67,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\DeleteThisPersonCommand.cs" />
-    <Compile Include="Domain\Details.cs" />
-    <Compile Include="Domain\IDetails.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\AddNewPersonCommand.cs" />
-    <Compile Include="OthersCode\AttachedProperties.cs" />
-    <Compile Include="Resourses\LocalizedStrings.cs" />
-    <Compile Include="Resourses\Strings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resourses\Strings.ru.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Strings.ru.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Storage\StateManager.cs" />
-    <Compile Include="Domain\IPersonFactory.cs" />
-    <Compile Include="Domain\Calculation.cs" />
-    <Compile Include="Domain\ICalculation.cs" />
-    <Compile Include="Domain\IPerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\PersonFactory.cs" />
-    <Compile Include="ValueConverters\DebtToStringConverter.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\PersonViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelLocator.cs" />
-    <Compile Include="Views\Person.xaml.cs">
-      <DependentUpon>Person.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Tests\AddNewPersonCommandTest.cs" />
+    <Compile Include="Tests\CalculationsTests.cs" />
+    <Compile Include="Tests\MainViewModelTests.cs" />
+    <Compile Include="Tests\MoqPerson.cs" />
+    <Compile Include="Tests\PersonFactoryTests.cs" />
+    <Compile Include="Tests\PersonViewModelTest.cs" />
+    <Compile Include="Utils\MainPageExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -129,10 +85,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Person.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,23 +100,13 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\appbar.add.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <DesignData Include="SampleData\MainViewModelSampleData.xaml">
-      <Generator>MSBuild:MarkupCompilePass1</Generator>
-    </DesignData>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resourses\Strings.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resourses\Strings.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <ProjectReference Include="..\PiratesBay\PiratesBay.csproj">
+      <Project>{8D8191DD-AA2A-4CE7-A320-83575EB56C61}</Project>
+      <Name>PiratesBay</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

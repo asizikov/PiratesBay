@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace PiratesBay.Commands
 {
-    class AddNewPersonCommand: ICommand
+    public class AddNewPersonCommand: ICommand
     {
         private Func<bool> canExecuteFunc;
         private Action execute;
