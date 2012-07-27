@@ -15,17 +15,12 @@
     <UserControl.Resources>
         <converters:DebtToStringConverter x:Key="debtToStringConverter"/>
     </UserControl.Resources>
-    <Grid x:Name="LayoutRoot" attachedProperties:AttachedProperties.AutoSelectText="True">
+    <Grid x:Name="LayoutRoot" attachedProperties:AttachedProperties.AutoSelectText="True" Background="#FF333333">
         <toolkit:ContextMenuService.ContextMenu>
             <toolkit:ContextMenu>
                 <toolkit:MenuItem Header="Удалить" Command="{Binding DeleteThisCommand}"/>
             </toolkit:ContextMenu>
         </toolkit:ContextMenuService.ContextMenu>
-        <Rectangle x:Name="Border" StrokeThickness="2">
-            <Rectangle.Stroke>
-        		<SolidColorBrush Color="{StaticResource PhoneBorderColor}"/>
-        	</Rectangle.Stroke>
-        </Rectangle>
         <TextBox Height="71" HorizontalAlignment="Left" x:Name="PersonName" 
                  Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="456" />
         <TextBox Height="70" Margin="139,63,210,0" x:Name="Spent" 

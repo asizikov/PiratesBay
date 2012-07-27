@@ -1,55 +1,79 @@
-﻿<phone:PhoneApplicationPage 
-    x:Class="PiratesBay.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:view="clr-namespace:PiratesBay.Views"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+﻿<phone:PhoneApplicationPage x:Class="PiratesBay.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:appbar="clr-namespace:BindableApplicationBar;assembly=BindableApplicationBar"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:view="clr-namespace:PiratesBay.Views"
+                            d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}"
+                            d:DesignHeight="768"
+                            d:DesignWidth="480"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            Orientation="Portrait"
+                            shell:SystemTray.IsVisible="True"
+                            SupportedOrientations="Portrait"
+                            mc:Ignorable="d">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
+    <!--  LayoutRoot is the root grid where all page content is placed  -->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" 
-                       Text="Pirates Bay" 
-                       Style="{StaticResource PhoneTextNormalStyle}"/>
+        <!--  TitlePanel contains the name of the application and page title  -->
+        <StackPanel x:Name="TitlePanel"
+                    Grid.Row="0"
+                    Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle"
+                       Style="{StaticResource PhoneTextNormalStyle}"
+                       Text="Pirates Bay" />
         </StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox Margin="0,86,0,6" ItemsSource="{Binding Path=Persons}">
+        <!--  ContentPanel - place additional content here  -->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="12,0,12,0">
+            <ListBox Margin="0,62,0,49" ItemsSource="{Binding Path=Persons}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <view:Person Margin="0,0,0,5"/>
+                        <view:Person Margin="12,0,0,12" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Content="Добавить" Height="80" 
-                    Command="{Binding Path=AddNewPersonCommand}"
-                    HorizontalAlignment="Left" Name="button1" 
-                    VerticalAlignment="Top" Width="250" />
-            <TextBlock Height="46" 
-                       HorizontalAlignment="Left" 
-                       Margin="262,28,0,0" Name="textBlock1" 
-                       Text="ВСЕГО:" VerticalAlignment="Top" Width="80" />
-            <TextBlock Height="46" 
-                       HorizontalAlignment="Left" 
-                       Margin="348,28,0,0"
-                       Text="{Binding Path=Total, StringFormat=F2, FallbackValue=0.0}" 
-                       VerticalAlignment="Top" Width="100" />
+            <StackPanel Height="58"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                <TextBlock Name="textBlock1"
+                           Width="80"
+                           Height="27"
+                           Margin="12,28,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Text="ВСЕГО:" />
+                <TextBlock Width="100"
+                           Height="27"
+                           Margin="12,28,0,0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Text="{Binding Path=Total,
+                                          StringFormat=F2,
+                                          FallbackValue=0.0}" />
+            </StackPanel>
         </Grid>
     </Grid>
+    <appbar:Bindable.ApplicationBar>
+        <appbar:BindableApplicationBar BindableOpacity="0.8" Mode="Default">
+            <appbar:BindableApplicationBar.Buttons>
+                <appbar:BindableApplicationBarButton Command="{Binding AddNewPersonCommand}"
+                                                     IconUri="/Images\appbar.add.png"
+                                                     Text="{Binding Strings.Add,
+                                                                    Source={StaticResource LocalizedStrings}}" />
+            </appbar:BindableApplicationBar.Buttons>
+        </appbar:BindableApplicationBar>
+    </appbar:Bindable.ApplicationBar>
 </phone:PhoneApplicationPage>
