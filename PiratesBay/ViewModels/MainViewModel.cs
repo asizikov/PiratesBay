@@ -12,24 +12,6 @@ namespace PiratesBay.ViewModels
 
         private double _total;
         
-
-        public ObservableCollection<IPerson> Persons { get; private set; }
-
-        public double Total {
-            get { return _total; }
-            private set 
-            {
-                if (_total != value) 
-                {
-                    _total = value;
-                    RaisePropertyChanged("Total");
-                }
-            }
-        }
-
-        public ICommand AddNewPersonCommand { get; private set; }
-
-
         public MainViewModel(ICalculation calculation, ObservableCollection<IPerson> persons, 
             IPersonFactory<PersonViewModel> personsFactory)
         {
@@ -40,6 +22,25 @@ namespace PiratesBay.ViewModels
 
             SetUpCommands();
         }
+
+
+        public ObservableCollection<IPerson> Persons { get; private set; }
+
+        public double Total
+        {
+            get { return _total; }
+            private set
+            {
+                if (_total != value)
+                {
+                    _total = value;
+                    RaisePropertyChanged("Total");
+                }
+            }
+        }
+
+        public ICommand AddNewPersonCommand { get; private set; }
+
 
         private void SetUpCommands()
         {
