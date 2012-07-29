@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PiratesBay.Domain
 {
@@ -50,7 +49,7 @@ namespace PiratesBay.Domain
                 .OrderBy(p => p.Debt)
                 .Select(p => (new Details { Name = p.Name, Get = p.Debt / gives, Give = p.Debt / gets}) as IDetails)
                 .ToList();
-            return details as IList<IDetails>;
+            return details;
         }
     }
 }

@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PiratesBay.Domain;
 using PiratesBay.ViewModels;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace PiratesBay.Test.Unit
@@ -10,27 +9,27 @@ namespace PiratesBay.Test.Unit
     [TestClass]
     public class MainViewModelTests
     {
-        private ICalculation calculation;
-        private ObservableCollection<IPerson> Persons;
-        private IPersonFactory<PersonViewModel> factory;
+        private ICalculation _calculation;
+        private ObservableCollection<IPerson> _persons;
+        private IPersonFactory<PersonViewModel> _factory;
 
         [TestInitialize]
         public void SetUp()
         {
-            Persons = new ObservableCollection<IPerson>();
-            calculation = new Calculation(Persons);
-            factory = new PersonFactory();
+            _persons = new ObservableCollection<IPerson>();
+            _calculation = new Calculation(_persons);
+            _factory = new PersonFactory();
         }
 
         [TestMethod]
         public void InitTest()
         {
-            var vm = new MainViewModel(calculation, Persons, factory);
+            var vm = new MainViewModel(_calculation, _persons, _factory);
             Assert.IsNotNull(vm);
 
             Assert.IsNotNull(vm.Persons);
             Assert.AreEqual(1, vm.Persons.Count);
-            Assert.AreEqual(Persons, vm.Persons);
+            Assert.AreEqual(_persons, vm.Persons);
             Assert.IsInstanceOfType(vm.Persons[0], typeof(PersonViewModel));
             Assert.AreEqual(String.Format("{0}#1", PersonViewModel.DefaultName), vm.Persons[0].Name);
             Assert.AreEqual(0.0, vm.Total);
@@ -40,7 +39,7 @@ namespace PiratesBay.Test.Unit
         [TestMethod]
         public void AddNewPersonCommandTest()
         {
-            var vm = new MainViewModel(calculation, Persons, factory);
+            var vm = new MainViewModel(_calculation, _persons, _factory);
             Assert.IsNotNull(vm.AddNewPersonCommand);
             Assert.IsTrue(vm.AddNewPersonCommand.CanExecute(null));
 
