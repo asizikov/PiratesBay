@@ -7,7 +7,7 @@ namespace PiratesBay
     {
         public MainPage()
         {
-            DataContext = ViewModelLocator.MainViewModel;
+            DataContext = ViewModelLocator.SessionViewModel;
             InitializeComponent();
         }
     }

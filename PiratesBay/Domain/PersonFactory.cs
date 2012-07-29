@@ -1,4 +1,5 @@
 ﻿using System;
+using PiratesBay.Model;
 using PiratesBay.ViewModels;
 
 namespace PiratesBay.Domain
@@ -11,6 +12,18 @@ namespace PiratesBay.Domain
             {
                 Name = String.Format("{0}#{1}", PersonViewModel.DefaultName, number + 1)
             };
+            return person;
+        }
+    }
+
+    public class ParticipantFactory : IPersonFactory<Person>
+    {
+        public Person GetNewPerson(int number)
+        {
+            var person = new Person()
+                {
+                    Name = String.Format("{0}#{1}", PersonViewModel.DefaultName, number + 1)
+                };
             return person;
         }
     }

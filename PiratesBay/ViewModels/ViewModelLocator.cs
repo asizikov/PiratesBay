@@ -1,26 +1,25 @@
-﻿using System.Collections.ObjectModel;
-using PiratesBay.Domain;
+﻿using PiratesBay.Domain;
+using PiratesBay.Model;
 
 namespace PiratesBay.ViewModels
 {
     public static class ViewModelLocator
     {
-        private static MainViewModel _mainViewModel;
+        private static SessionViewModel _sessionViewModel;
 
-        public static MainViewModel MainViewModel 
+        public static SessionViewModel SessionViewModel 
         {
             get 
             {
-                return _mainViewModel ??
-                    (_mainViewModel = BuildMainViewModel());
+                return _sessionViewModel ??
+                    (_sessionViewModel = BuildSessionViewModel());
             }
         }
 
-        private static MainViewModel BuildMainViewModel()
+        private static SessionViewModel BuildSessionViewModel()
         {
-            var persons = new ObservableCollection<IPerson>();
-            var personsFactory = new PersonFactory();
-            return new MainViewModel(new Calculation(persons), persons, personsFactory);
+            var personsFactory = new ParticipantFactory();
+            return new SessionViewModel(new SessionModel(), personsFactory);
         }
     }
 }
