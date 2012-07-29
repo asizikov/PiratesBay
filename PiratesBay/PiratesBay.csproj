@@ -107,6 +107,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Commands\AddNewPersonCommand.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\SessionModel.cs" />
     <Compile Include="OthersCode\AttachedProperties.cs" />
     <Compile Include="Resourses\LocalizedStrings.cs" />
     <Compile Include="Resourses\Strings.Designer.cs">
@@ -129,7 +131,8 @@
     <Compile Include="ValueConverters\DebtToStringConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\MainVM.cs" />
+    <Compile Include="ViewModels\SessionViewModel.cs" />
+    <Compile Include="ViewModels\ParticipantViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\Person.xaml.cs">
