@@ -1,6 +1,6 @@
 ﻿namespace PiratesBay.Domain
 {
-    public interface IPersonFactory<T> where T : IPerson
+    public interface IPersonFactory<T>
     {
         T GetNewPerson(int number);
     }

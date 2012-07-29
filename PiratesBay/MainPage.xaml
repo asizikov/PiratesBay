@@ -41,7 +41,7 @@
             <ListBox Margin="0,62,0,49" ItemsSource="{Binding Path=Participants}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <view:Person Margin="12,0,0,12" />
+                        <view:PersonView Margin="12,0,0,12" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -72,6 +72,10 @@
                 <appbar:BindableApplicationBarButton Command="{Binding AddNewPersonCommand}"
                                                      IconUri="/Images\appbar.add.png"
                                                      Text="{Binding Strings.Add,
+                                                                    Source={StaticResource LocalizedStrings}}" />
+                <appbar:BindableApplicationBarButton Command="{Binding DeleteSelectedCommand}"
+                                                     IconUri="/Images\appbar.add.png"
+                                                     Text="{Binding Strings.Delete,
                                                                     Source={StaticResource LocalizedStrings}}" />
             </appbar:BindableApplicationBar.Buttons>
         </appbar:BindableApplicationBar>

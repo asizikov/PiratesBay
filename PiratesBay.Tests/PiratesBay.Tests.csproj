@@ -56,6 +56,7 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight">
       <HintPath>..\Lib\Tests\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
+    <Reference Include="ReactiveUI_WP7, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -71,11 +72,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\AddNewPersonCommandTest.cs" />
     <Compile Include="Tests\CalculationsTests.cs" />
-    <Compile Include="Tests\MainViewModelTests.cs" />
-    <Compile Include="Tests\MoqPerson.cs" />
-    <Compile Include="Tests\PersonFactoryTests.cs" />
     <Compile Include="Tests\PersonViewModelTest.cs" />
     <Compile Include="Utils\MainPageExtensions.cs" />
   </ItemGroup>
