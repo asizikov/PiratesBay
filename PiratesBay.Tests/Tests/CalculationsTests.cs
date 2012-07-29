@@ -1,80 +1,77 @@
-﻿using System;
-using Microsoft.Silverlight.Testing.UnitTesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PiratesBay.Domain;
 using System.Collections.Generic;
+using PiratesBay.Model;
 
 namespace PiratesBay.Test.Unit
 {
     [TestClass]
     public class CalculationsTests
     {
-        private ICalculation calculation;
-        private IPerson first;
-        private IPerson second;
-        private List<IPerson> Persons;
+        private ICalculation _calculation;
+        private Person _first;
+        private Person _second;
+        private List<Person> _persons;
 
         [TestInitialize]
         public void SetUp()
         {
-            Persons = new List<IPerson>();
-            calculation = new Calculation(Persons);
-            first = new MoqPerson(10.0);
-            second = new MoqPerson(20.0);
+            _persons = new List<Person>();
+            _calculation = new Calculation(_persons);
+            _first = new Person { Spent = 10.0 };
+            _second = new Person { Spent = 20.0 };
         }
 
         [TestMethod]
         public void InitialisationTest() 
         {
-            Assert.AreEqual(0, calculation.Total);
-            Assert.AreEqual(0, calculation.Persons.Count);
+            Assert.AreEqual(0, _calculation.Total);
+            Assert.AreEqual(0, _calculation.Persons.Count);
         }
 
         [TestMethod]
         public void AddPersonsTest() 
         {
-            Persons.Add(first);
-            Assert.AreEqual(1, calculation.Persons.Count);
-            Assert.IsTrue(calculation.Persons.Contains(first));
+            _persons.Add(_first);
+            Assert.AreEqual(1, _calculation.Persons.Count);
+            Assert.IsTrue(_calculation.Persons.Contains(_first));
         }
 
         [TestMethod]
         public void TotalTest()
         {
-            Persons.Add(first);
-            Assert.AreEqual(first.Spent, calculation.Total);
+            _persons.Add(_first);
+            Assert.AreEqual(_first.Spent, _calculation.Total);
             
-            Persons.Add(second);
-            Assert.AreEqual(first.Spent + second.Spent, calculation.Total);
+            _persons.Add(_second);
+            Assert.AreEqual(_first.Spent + _second.Spent, _calculation.Total);
         }
 
         [TestMethod]
         public void ProcessTest()
         {
-            Persons.Add(first);
-            Persons.Add(second);
-            calculation.Process();
+            _persons.Add(_first);
+            _persons.Add(_second);
+            _calculation.Process();
 
-            Assert.AreEqual(-5.0, first.Debt);
-            Assert.AreEqual(5.0, second.Debt);
+            Assert.AreEqual(-5.0, _first.Debt);
+            Assert.AreEqual(5.0, _second.Debt);
         }
 
         [TestMethod]
         public void GetDetailsTest()
         {
-            first.Spent = 16.0;
-            Persons.Add(first);
-            Persons.Add(second);
-            var third = new MoqPerson(6.0);
-            Persons.Add(third);
-            calculation.Process();
-            var details = calculation.GetDetails(third);
+            _first.Spent = 16.0;
+            _persons.Add(_first);
+            _persons.Add(_second);
+            var third = new Person { Spent = 6.0 };
+            _persons.Add(third);
+            _calculation.Process();
+            var details = _calculation.GetDetails(third);
 
             Assert.AreEqual(2, details.Count);
             Assert.AreEqual(2.0, details[0].Give);
             Assert.AreEqual(6.0, details[1].Give);
-            //первому 2
-            //второму 6
         }
 
     }

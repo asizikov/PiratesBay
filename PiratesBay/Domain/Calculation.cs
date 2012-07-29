@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using PiratesBay.Extensions;
+using PiratesBay.Model;
 
 namespace PiratesBay.Domain
 {
@@ -16,14 +17,11 @@ namespace PiratesBay.Domain
             } 
         }
 
-        public IList<IPerson> Persons { get; private set; }
+        public IList<Person> Persons { get; private set; }
 
-        public Calculation(IList<IPerson> personsList)
+        public Calculation(IList<Person> personsList)
         {
-            if (personsList == null)
-                throw new ArgumentNullException("personsList can not be null");
-
-            Persons = personsList;
+            Persons = personsList.ThrowIfNull("personsList");
         }
 
         public void Process()
@@ -39,7 +37,7 @@ namespace PiratesBay.Domain
         }
 
 
-        public IList<IDetails> GetDetails(IPerson person)
+        public IList<Details> GetDetails(Person person)
         {
             var gives = Persons.Count(p => p.Debt > 0);
             var gets = Persons.Count(p => p.Debt < 0);
@@ -47,7 +45,7 @@ namespace PiratesBay.Domain
             var details = Persons.Where(p => p.Debt != 0.0)
                 .Where(p => p != person)
                 .OrderBy(p => p.Debt)
-                .Select(p => (new Details { Name = p.Name, Get = p.Debt / gives, Give = p.Debt / gets}) as IDetails)
+                .Select(p => (new Details { Name = p.Name, Get = p.Debt / gives, Give = p.Debt / gets}))
                 .ToList();
             return details;
         }
