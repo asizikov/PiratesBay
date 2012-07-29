@@ -34,20 +34,16 @@ namespace PiratesBay.ViewModels
             Participants = _model.Participants
                                     .CreateDerivedCollection(x => new ParticipantViewModel(x));
             
-            //code to comment
             Participants.ChangeTrackingEnabled = true;
 
-
-
-            var deleteSelectedCanExecute = Participants.ItemChanged
-                                              .Select(_ =>
-                                                  {
-                                                      return Participants.Any(p => p.IsSelected);
-                                                  });
+            var deleteCanExecute = Observable.Merge(Participants.ItemChanged
+                                                 .Select(_ => Participants.Any(p => p.IsSelected)),
+                                             Participants.CollectionCountChanged
+                                             .Select(_ => Participants.Any(p=> p.IsSelected)));
 
             DeleteSelectedCommand = new ReactiveCommand
                 (
-                       deleteSelectedCanExecute
+                       deleteCanExecute
                 );
             DeleteSelectedCommand.Subscribe(
                 x =>
